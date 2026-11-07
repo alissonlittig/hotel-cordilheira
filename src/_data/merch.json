@@ -1,0 +1,8 @@
+[
+ {"id":"m1","name":"Camiseta Mapas de Neblina","price":89,"kind":"Vestuário","sizes":["P","M","G","GG"],"seed":5,"hue":28,"desc":"Algodão cru 180 g, estampa em serigrafia."},
+ {"id":"m2","name":"LP Mapas de Neblina","price":149,"kind":"Disco","sizes":[],"seed":5,"hue":28,"desc":"Vinil 180 g com encarte e letras. Edição numerada de 500."},
+ {"id":"m3","name":"Moletom Cordilheira","price":219,"kind":"Vestuário","sizes":["P","M","G","GG"],"seed":8,"hue":340,"desc":"Felpa por dentro, bordado no peito."},
+ {"id":"m4","name":"Fita cassete Água Parada","price":45,"kind":"Disco","sizes":[],"seed":2,"hue":196,"desc":"Tiragem de 200 cópias, fita cromo."},
+ {"id":"m5","name":"Pôster da turnê 2027","price":59,"kind":"Papel","sizes":[],"seed":14,"hue":260,"desc":"A2, impressão risográfica em duas cores."},
+ {"id":"m6","name":"Ecobag Quarto 12","price":39,"kind":"Acessório","sizes":[],"seed":11,"hue":88,"desc":"Lona pesada com bolso interno."}
+]

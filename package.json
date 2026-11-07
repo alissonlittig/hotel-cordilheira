@@ -1,0 +1,17 @@
+{
+  "name": "hotel-cordilheira",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo website for a fictional indie band: tour dates, discography, merch (all data fictional)",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "test": "node --test test/"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@fontsource-variable/bricolage-grotesque": "^5.2.0",
+    "@fontsource/dm-mono": "^5.2.0"
+  }
+}

@@ -1,0 +1,139 @@
+---
+layout: base.njk
+---
+<section class="hero" id="topo">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <p class="eyebrow">Dream-pop · Belo Horizonte</p>
+      <h1>Hotel<br>Cordilheira</h1>
+      <p class="lead">Quatro pessoas, teclados velhos e canções sobre lugares que já mudaram. Novo disco, <em>Mapas de Neblina</em>, e turnê pelo Brasil até abril.</p>
+      <div class="hero-cta"><a class="btn" href="#shows">Ver agenda</a><a class="btn ghost" href="#discos">Ouvir o disco</a></div>
+    </div>
+    <button class="hero-card" type="button" data-open-release="mapas-de-neblina" aria-label="Abrir o álbum Mapas de Neblina">
+      <span class="cover">{% cover 5, 28, 480 %}</span>
+      <span class="hero-card-meta"><span class="mono">Novo álbum · 2026</span><strong>Mapas de Neblina</strong></span>
+    </button>
+  </div>
+  {% set nxt = shows | first %}
+  <div class="wrap"><div class="next">
+    <span class="mono">Próximo show</span>
+    <strong>{{ nxt.date | dia }} {{ nxt.date | mes }} · {{ nxt.city }}/{{ nxt.uf }}</strong>
+    <span>{{ nxt.venue }} · {{ nxt.time }}</span>
+    <a class="btn small" href="#shows">Ingressos</a>
+  </div></div>
+</section>
+
+<section class="sec" id="shows" aria-labelledby="h-shows">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="eyebrow">Agenda</p><h2 id="h-shows">Turnê 2026–27</h2></div>
+      <form class="filters" aria-label="Filtrar shows">
+        <label>Estado<select id="f-uf"><option value="">Todos</option>{% for u in shows | ufs %}<option>{{ u }}</option>{% endfor %}</select></label>
+        <label>Mês<select id="f-mes"><option value="">Todos</option>{% for m in shows | months %}<option value="{{ m.v }}">{{ m.t }}</option>{% endfor %}</select></label>
+      </form>
+    </div>
+    <ul class="shows" id="shows-list">
+    {% for s in shows %}
+      <li class="show" data-uf="{{ s.uf }}" data-month="{{ s.date | ym }}">
+        <time class="date" datetime="{{ s.date }}"><b>{{ s.date | dia }}</b><span>{{ s.date | mes }}</span></time>
+        <div class="where"><strong>{{ s.city }}, {{ s.uf }}</strong><span>{{ s.venue }} · {{ s.time }}</span><small>{{ s.note }}</small></div>
+        <div class="price mono">{{ s.price | brl }}</div>
+        <div class="acts">
+          <button class="btn small ghost" data-ics="{{ s.id }}" type="button" aria-label="Adicionar show em {{ s.city }} ao calendário">.ics</button>
+          {% if s.status == 'soldout' %}<button class="btn small" type="button" disabled>Esgotado</button>
+          {% else %}<button class="btn small" data-ticket="{{ s.id }}" type="button">{% if s.status == 'few' %}Últimos ingressos{% else %}Ingresso{% endif %}</button>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+    <p class="empty" id="shows-empty" hidden>Nenhum show com esse filtro. Tente outro estado ou mês.</p>
+  </div>
+</section>
+
+<section class="sec alt" id="discos" aria-labelledby="h-discos">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="eyebrow">Discografia</p><h2 id="h-discos">Discos e canções</h2></div></div>
+    <div class="discs">
+    {% for r in releases %}
+      <button class="disc" type="button" data-open-release="{{ r.slug }}">
+        <span class="cover">{% cover r.seed, r.hue, 360 %}</span>
+        <span class="mono">{{ r.type }} · {{ r.year }}</span>
+        <strong>{{ r.title }}</strong>
+        <small>{{ r.tracks.length }} faixas · {{ r.tracks | mins }}</small>
+      </button>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="loja" aria-labelledby="h-loja">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="eyebrow">Loja</p><h2 id="h-loja">Merch da turnê</h2></div><p class="note">Vitrine de demonstração: nenhuma compra é processada. Frete grátis acima de R$ 250.</p></div>
+    <div class="merch">
+    {% for m in merch %}
+      <article class="item" data-id="{{ m.id }}" data-name="{{ m.name }}" data-price="{{ m.price }}">
+        <div class="cover">{% cover m.seed, m.hue, 360 %}</div>
+        <p class="mono">{{ m.kind }}</p>
+        <h3>{{ m.name }}</h3>
+        <p class="desc">{{ m.desc }}</p>
+        <div class="buy">
+          <b>{{ m.price | brl }}</b>
+          {% if m.sizes.length %}<select class="size" aria-label="Tamanho de {{ m.name }}">{% for z in m.sizes %}<option>{{ z }}</option>{% endfor %}</select>{% endif %}
+          <button class="btn small add" type="button">Adicionar</button>
+        </div>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="banda" aria-labelledby="h-banda">
+  <div class="wrap about">
+    <div><p class="eyebrow">A banda</p><h2 id="h-banda">Gravado em casa, tocado alto</h2>
+      <p>O Hotel Cordilheira nasceu em 2021 num apartamento do bairro Santa Tereza, quando Lia e Caio trocaram demos por mensagem de voz. Hoje são quatro, com três discos, uma fita e mais de cem shows pequenos na estrada.</p>
+      <p>Tudo o que aparece neste site é fictício: a banda, as datas, os discos e os preços fazem parte de uma demonstração de portfólio.</p></div>
+    <ul class="team">{% for t in team %}<li><strong>{{ t[0] }}</strong><span class="mono">{{ t[1] }}</span></li>{% endfor %}</ul>
+  </div>
+</section>
+
+<section class="sec" id="lista" aria-labelledby="h-lista">
+  <div class="wrap news">
+    <div><p class="eyebrow">Lista de e-mails</p><h2 id="h-lista">Aviso de show na sua cidade</h2><p>Um e-mail por mês, no máximo. (Demonstração: nada é enviado nem guardado.)</p></div>
+    <form id="news" novalidate>
+      <label for="n-mail">E-mail</label>
+      <div class="row"><input id="n-mail" type="email" autocomplete="email" placeholder="voce@exemplo.com" required><button class="btn" type="submit">Inscrever</button></div>
+      <p class="msg" id="n-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<dialog id="dlg-rel" aria-labelledby="rel-t"><div class="dlg">
+  <button class="x" type="button" data-close aria-label="Fechar">×</button>
+  <div class="rel-grid"><div class="cover" id="rel-cover"></div>
+    <div><p class="mono" id="rel-meta"></p><h3 id="rel-t"></h3><p id="rel-b" class="desc"></p>
+      <div class="player"><button class="play" id="rel-play" type="button" aria-label="Tocar prévia simulada">▶</button>
+        <div class="bar" aria-hidden="true"><i id="rel-bar"></i></div><span class="mono" id="rel-now"></span></div>
+      <p class="note">Player de demonstração: sem áudio real.</p></div></div>
+  <ol class="tracks" id="rel-tracks"></ol>
+</div></dialog>
+
+<dialog id="dlg-tk" aria-labelledby="tk-t"><div class="dlg narrow">
+  <button class="x" type="button" data-close aria-label="Fechar">×</button>
+  <p class="mono" id="tk-meta"></p><h3 id="tk-t"></h3>
+  <form id="tk-form" novalidate>
+    <label for="tk-q">Quantidade</label><select id="tk-q"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+    <label for="tk-n">Nome completo</label><input id="tk-n" autocomplete="name" required>
+    <label for="tk-e">E-mail</label><input id="tk-e" type="email" autocomplete="email" required>
+    <p class="total" id="tk-total"></p>
+    <p class="msg" id="tk-msg" role="status"></p>
+    <button class="btn" type="submit">Reservar (demo)</button>
+  </form>
+</div></dialog>
+
+<dialog id="dlg-cart" aria-labelledby="cart-t"><div class="dlg narrow">
+  <button class="x" type="button" data-close aria-label="Fechar">×</button>
+  <h3 id="cart-t">Sua sacola</h3>
+  <ul class="cart" id="cart-list"></ul>
+  <dl class="sum" id="cart-sum"></dl>
+  <p class="msg" id="cart-msg" role="status"></p>
+  <button class="btn" id="cart-go" type="button">Finalizar (demo)</button>
+</div></dialog>

@@ -1,0 +1,12 @@
+[
+ {"id":"s1","date":"2026-12-04","time":"21:00","city":"Belo Horizonte","uf":"MG","venue":"Teatro Maletta Sul","price":60,"status":"few","note":"Show de lançamento do disco Mapas de Neblina"},
+ {"id":"s2","date":"2026-12-11","time":"22:00","city":"São Paulo","uf":"SP","venue":"Casa do Mancha","price":70,"status":"open","note":"Com Rio Raso na abertura"},
+ {"id":"s3","date":"2026-12-12","time":"20:00","city":"Campinas","uf":"SP","venue":"Galpão Estação","price":55,"status":"open","note":"Sessão acústica de 70 minutos"},
+ {"id":"s4","date":"2027-01-16","time":"21:30","city":"Rio de Janeiro","uf":"RJ","venue":"Sala Vermelha","price":80,"status":"soldout","note":"Ingressos esgotados, lista de espera aberta"},
+ {"id":"s5","date":"2027-01-23","time":"20:00","city":"Curitiba","uf":"PR","venue":"Armazém do Largo","price":65,"status":"open","note":"Primeira vez na cidade"},
+ {"id":"s6","date":"2027-02-06","time":"22:00","city":"Porto Alegre","uf":"RS","venue":"Bar da Usina","price":60,"status":"open","note":"Noite dupla com Lago Fundo"},
+ {"id":"s7","date":"2027-02-20","time":"19:00","city":"Belo Horizonte","uf":"MG","venue":"Parque Ribeirão Claro","price":0,"status":"open","note":"Show gratuito ao ar livre, ao pôr do sol"},
+ {"id":"s8","date":"2027-03-13","time":"21:00","city":"Salvador","uf":"BA","venue":"Trapiche Barroquinha","price":70,"status":"few","note":"Abertura da turnê Nordeste"},
+ {"id":"s9","date":"2027-03-20","time":"21:00","city":"Recife","uf":"PE","venue":"Teatro do Parque Velho","price":75,"status":"open","note":"Participação de Dona Celeste"},
+ {"id":"s10","date":"2027-04-10","time":"20:30","city":"Brasília","uf":"DF","venue":"Clube do Eixo","price":60,"status":"open","note":"Encerramento da turnê"}
+]
